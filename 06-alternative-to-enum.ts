@@ -1,11 +1,24 @@
 (() => {
-    // Literal Types (Alternative to Enum)
-    let userRole: 'admin' | 'guess' | 'teacher' | 'student' = 'admin'
+  // Define a reusable type (cleaner than repeating)
+  type Role = "admin" | "guest" | "teacher" | "student";
 
-    userRole = 'guess'
-    // anotherUserRole = 'superadmin'
+  let userRole: Role = "admin";
 
-    function access(role: 'admin' | 'guess' | 'teacher' | 'student') {
-        // ...
+  userRole = "guest"; // 
+  function access(role: Role): string {
+    if (role === "admin") {
+      return "Full system access";
+    } else if (role === "teacher") {
+      return "Access to teaching tools";
+    } else if (role === "student") {
+      return "Access to learning materials";
+    } else {
+      return "Limited access";
     }
-})
+  }
+
+  console.log("Role:", userRole);
+  console.log("Permission:", access(userRole));
+
+
+})();
